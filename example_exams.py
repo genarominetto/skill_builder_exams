@@ -1,3 +1,4 @@
+from skill_builder_exams.exam import Exam
 def example_exams():
   CRUD = {'Adding new data to a database': 'Create',
   'Retrieving existing data from a database': 'Read',
