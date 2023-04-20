@@ -111,17 +111,6 @@ if __name__ == "__main__":
     remove_record("BaseProducts","DELETE FROM TableProducts WHERE ID=3")
     #The record with ID=4 has been removed successfully!
 
-# Define the table structure
-table_structure = """
-    ID INTEGER PRIMARY KEY AUTOINCREMENT,
-    QUESTION VARCHAR(255),
-    ANSWER VARCHAR(255)
-"""
-
-# Create the 'exams' database with the 'bash' table
-create_table("exams.db", "bash", table_structure)
-
-
 def insert_dict_records(database_name, table_name, data_dict):
     my_connection = sqlite3.connect(database_name)
     my_cursor = my_connection.cursor()
