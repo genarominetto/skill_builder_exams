@@ -141,8 +141,7 @@ def read_records_as_dict(database_name, table_name):
     return result_dict
 
 def read_exam(table_name):
-  return read_records_as_dict("exams.db", table_name)
-
+  return read_records_as_dict("/content/skill_builder_exams/exams.db", table_name)
 
 def get_table_names(database_name):
     my_connection = sqlite3.connect(database_name)
