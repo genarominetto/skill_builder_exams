@@ -161,7 +161,7 @@ def insert_exam(exam_name,exam_data={}):
   insert_dict_records("/content/skill_builder_exams/exams.db", exam_name, exam_data)
 
 
-
+from skill_builder_exams.exam import Exam
 def read_all_exams():
   exams = []
   print("tablenames: ", get_table_names("/content/skill_builder_exams/exams.db"))
