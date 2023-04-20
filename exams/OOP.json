@@ -1,0 +1,5 @@
+{'Abstraction': 'Focusing only on the essential features of an object or a class while ignoring the unnecessary details',
+ 'Encapsulation': 'Bundling the data and the functions that manipulate the data within a single unit, which is known as a class',
+ 'Inheritance': 'Allows a new class to be based on an existing class, inheriting its properties and methods',
+ 'Polymorphism': 'Refers to the ability of an object to take on different forms or behaviors depending on the context in which it is used',
+ 'Class': 'A blueprint or a template for creating objects that defines a set of properties and methods that are common to all objects of that class'}

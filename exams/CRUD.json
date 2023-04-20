@@ -1,0 +1,4 @@
+{'Create': 'Adding new data to a database',
+ 'Read': 'Retrieving existing data from a database',
+ 'Update': 'Modifying existing data in a database',
+ 'Delete': 'Removing data from a database'}

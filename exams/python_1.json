@@ -1,0 +1,6 @@
+{'len': 'A built-in Python function to calculate the length of a string or a list',
+ '#': 'Used to create a comment in Python',
+ 'List': 'A data type in Python that stores an ordered sequence of values',
+ 'for': 'A Python keyword used to create a loop that iterates over a sequence',
+ 'def': 'A Python keyword used to define a user-defined function'}
+
