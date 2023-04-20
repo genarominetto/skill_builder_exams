@@ -130,16 +130,7 @@ def insert_dict_records(database_name, table_name, data_dict):
 
     my_connection.commit()
     my_connection.close()
-
-# Sample data as a Python dictionary
-bash_exam_data = {
-    "What is the command to list files in a directory?": "ls",
-    "How do you create a new directory?": "mkdir",
-    "How do you change the current directory?": "cd"
-}
-
-# Insert the data from the dictionary into the 'bash' table in the 'exams.db' database
-insert_dict_records("exams.db", "bash", bash_exam_data)
+    
 
 def read_records_as_dict(database_name, table_name):
     my_connection = sqlite3.connect(database_name)
@@ -155,8 +146,3 @@ def read_records_as_dict(database_name, table_name):
         result_dict[question] = answer
 
     return result_dict
-# Read the data from the 'bash' table in the 'exams.db' database and store it in a Python dictionary
-bash_exam_data = read_records_as_dict("exams.db", "bash")
-
-# Print the Python dictionary
-print(bash_exam_data)
