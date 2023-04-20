@@ -121,17 +121,21 @@ table_structure = """
 # Create the 'exams' database with the 'bash' table
 create_table("exams.db", "bash", table_structure)
 
+
 def insert_dict_records(database_name, table_name, data_dict):
     my_connection = sqlite3.connect(database_name)
     my_cursor = my_connection.cursor()
 
     for question, answer in data_dict.items():
-        my_cursor.execute("INSERT INTO {} (QUESTION, ANSWER) VALUES (?, ?)".format(table_name), (question, answer))
+        my_cursor.execute("SELECT * FROM {} WHERE QUESTION = ? AND ANSWER = ?".format(table_name), (question, answer))
+        result = my_cursor.fetchone()
+
+        if not result:
+            my_cursor.execute("INSERT INTO {} (QUESTION, ANSWER) VALUES (?, ?)".format(table_name), (question, answer))
 
     my_connection.commit()
     my_connection.close()
     
-
 def read_records_as_dict(database_name, table_name):
     my_connection = sqlite3.connect(database_name)
     my_cursor = my_connection.cursor()
