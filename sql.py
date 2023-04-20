@@ -150,3 +150,25 @@ def read_records_as_dict(database_name, table_name):
         result_dict[question] = answer
 
     return result_dict
+
+def read_exam(table_name):
+  return read_records_as_dict("exams.db", table_name)
+
+
+def get_table_names(database_name):
+    my_connection = sqlite3.connect(database_name)
+    my_cursor = my_connection.cursor()
+    my_cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name != 'sqlite_sequence'")
+    table_names = [table[0] for table in my_cursor.fetchall()]
+    my_connection.close()
+    return table_names
+# Insert the data from the dictionary into the 'bash' table in the 'exams.db' database
+def insert_exam(exam_name,exam_data={}):
+  table_structure = """
+      ID INTEGER PRIMARY KEY AUTOINCREMENT,
+      QUESTION VARCHAR(255),
+      ANSWER VARCHAR(255)
+  """
+  create_table("exams.db", exam_name, table_structure)
+  insert_dict_records("exams.db", exam_name, exam_data)
+
