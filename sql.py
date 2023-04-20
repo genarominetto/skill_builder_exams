@@ -160,3 +160,12 @@ def insert_exam(exam_name,exam_data={}):
   create_table("/content/skill_builder_exams/exams.db", exam_name, table_structure)
   insert_dict_records("/content/skill_builder_exams/exams.db", exam_name, exam_data)
 
+
+
+def read_all_exams():
+  exams = []
+  print("tablenames: ", get_table_names("/content/skill_builder_exams/exams.db"))
+  for i in get_table_names("/content/skill_builder_exams/exams.db"):
+    exams.append(Exam(read_exam(i),i))
+  return exams
+
