@@ -157,6 +157,6 @@ def insert_exam(exam_name,exam_data={}):
       QUESTION VARCHAR(255),
       ANSWER VARCHAR(255)
   """
-  create_table("exams.db", exam_name, table_structure)
-  insert_dict_records("exams.db", exam_name, exam_data)
+  create_table("/content/skill_builder_exams/exams.db", exam_name, table_structure)
+  insert_dict_records("/content/skill_builder_exams/exams.db", exam_name, exam_data)
 
