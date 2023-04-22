@@ -36,6 +36,7 @@ class Exam:
         minutes, seconds = divmod(time_taken, 60)
         print("")       
         print("-------------------------------------------------------------------------")
+        print(f"{self.exam_description} test finished.")
         print(f"Your score is: {score}/{max_score}")
         print(f"Time taken: {int(minutes)} minutes and {int(seconds)} seconds")
         print("-------------------------------------------------------------------------")
