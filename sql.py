@@ -169,3 +169,10 @@ def read_all_exams():
     exams.append(Exam(read_exam(i),i))
   return exams
 
+def delete_exam(database_name, table_name):
+    my_connection = sqlite3.connect(database_name)
+    my_cursor = my_connection.cursor()
+    my_cursor.execute("DROP TABLE IF EXISTS {}".format(table_name))
+    my_connection.commit()
+    my_connection.close()
+
