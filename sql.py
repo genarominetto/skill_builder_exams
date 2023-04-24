@@ -168,11 +168,11 @@ def read_all_exams():
   for i in get_table_names("/content/skill_builder_exams/exams.db"):
     exams.append(Exam(read_exam(i),i))
   return exams
-
-def delete_exam(database_name, table_name):
+def delete_exam(table_name, database_name="/content/skill_builder_exams/exams.db"):
     my_connection = sqlite3.connect(database_name)
     my_cursor = my_connection.cursor()
     my_cursor.execute("DROP TABLE IF EXISTS {}".format(table_name))
     my_connection.commit()
     my_connection.close()
+
 
