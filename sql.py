@@ -164,7 +164,6 @@ def insert_exam(exam_name,exam_data={}):
 from skill_builder_exams.exam import Exam
 def read_all_exams():
   exams = []
-  print("tablenames: ", get_table_names("/content/skill_builder_exams/exams.db"))
   for i in get_table_names("/content/skill_builder_exams/exams.db"):
     exams.append(Exam(read_exam(i),i))
   return exams
