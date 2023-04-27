@@ -18,4 +18,4 @@ Skill Builder Exams is a Python program designed to manage and practice exams, a
 - `delete_all_exams()`: Deletes all exams from the database.
 - `practice(exams)`: Allows users to interactively practice the exams passed as an argument.
 
-To use the program, clone the repository, open `main.ipynb` in a Jupyter Notebook or Google Colab, and execute all cells.
+To use the program, open `main.ipynb` in a Jupyter Notebook or Google Colab, and execute all cells.
