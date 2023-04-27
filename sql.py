@@ -176,3 +176,7 @@ def delete_exam(table_name, database_name="/content/skill_builder_exams/exams.db
     my_connection.close()
 
 
+
+def delete_all_exams():
+  for i in read_all_exams():
+    delete_exam(i.exam_description)
