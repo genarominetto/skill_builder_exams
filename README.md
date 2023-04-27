@@ -19,3 +19,5 @@ Skill Builder Exams is a Python program designed to manage and practice exams, a
 - `practice(exams)`: Allows users to interactively practice the exams passed as an argument.
 
 To use the program, open `main.ipynb` in a Jupyter Notebook or Google Colab, and execute all cells.
+
+Welcomes contributions or feedback.
