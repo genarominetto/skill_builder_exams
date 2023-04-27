@@ -15,8 +15,8 @@ class Exam:
             score = 0
             max_score = len(key_list)
             for key in key_list:
-                print("---->  " + key + "?")
-                answer = input("? ")
+                print(" ---->  " + key + "?")
+                answer = input(" <---- ")
                 if answer.upper() == d[key].upper():
                     print("✔")
                     print("")
