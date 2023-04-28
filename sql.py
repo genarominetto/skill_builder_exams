@@ -88,7 +88,9 @@ def insert_exam(exam_name, tag, exam_data={}):
 from skill_builder_exams.exam import Exam
 
 def read_all_exams():
-    return [Exam(read_exam(table_name), table_name) for table_name in get_table_names("/content/skill_builder_exams/exams.db")]
+    table_names = get_table_names("/content/skill_builder_exams/exams.db")
+    filtered_table_names = [table_name for table_name in table_names if table_name not in ['sqlite_sequence', 'TABLE_EXAMS']]
+    return [Exam(read_exam(table_name), table_name) for table_name in filtered_table_names]
 
 def delete_exam(table_name, database_name="/content/skill_builder_exams/exams.db"):
     execute_query(database_name, f"DROP TABLE IF EXISTS {table_name}")
