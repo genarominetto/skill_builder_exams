@@ -1,41 +1,23 @@
 # Skill Builder Exams
 
-This repository contains a Python program that allows users to practice different exams on various topics like programming languages or music theory. It consists of several Python files and a Jupyter Notebook.
+Skill Builder Exams is a Python program designed to manage and practice exams, allowing users to create, read, update, and delete exams, as well as practice them interactively.
 
-## Table of Contents
-- [Files](#files)
-- [Usage](#usage)
+## Main Files
 
-## Files
-- **exam.py**: Contains code related to exam functionality.
-- **exams.db**: SQLite3 database that stores exam questions and related data.
-- **main.ipynb**: Jupyter Notebook file to run the program in Google Colab.
-- **practice.py**: Contains practice functionality to go through the questions.
-- **sql.py**: Contains functions for interacting with the database.
+- `exam.py`: Contains the Exam class definition and related methods.
+- `practice.py`: Provides the function to practice exams interactively.
+- `sql.py`: Offers functions to interact with the SQLite3 database (`exams.db`).
+- `main.ipynb`: Jupyter Notebook to run the program.
 
-## Usage
-To use the program, open the  file in Google Colab and follow the instructions provided in the notebook.
+## Key Functions
 
-### Import the code
-To import the necessary code, run the following cell:
+- `insert_exam(exam_name, questions)`: Inserts a new exam with the given name and questions into the database.
+- `read_exam(exam_name)`: Retrieves a specific exam by its name from the database.
+- `read_all_exams()`: Fetches all exams from the database.
+- `delete_exam(exam_name)`: Deletes a specific exam by its name from the database.
+- `delete_all_exams()`: Deletes all exams from the database.
+- `practice(exams)`: Allows users to interactively practice the exams passed as an argument.
 
-```
-%%capture
-!git clone https://github.com/GenaroHacker/skill_builder_exams.git
+To use the program, open `main.ipynb` in a Jupyter Notebook or Google Colab, and execute all cells.
 
-from skill_builder_exams.sql import insert_exam
-from skill_builder_exams.sql import read_all_exams
-from skill_builder_exams.sql import delete_exam
-from skill_builder_exams.sql import delete_all_exams
-from skill_builder_exams.practice import practice
-```
-
-### Practice
-To practice exams, run the following cell:
-
-```
-practice(read_all_exams(["python","guitar"]))
-```
-
-Follow the prompts to select the exams you would like to practice.
-
+Welcomes contributions or feedback.
