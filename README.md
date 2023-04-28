@@ -4,10 +4,10 @@ Skill Builder Exams is a Python program designed to manage and practice exams, a
 
 ## Main Files
 
+- `main.ipynb`: Jupyter Notebook to run the program.
 - `exam.py`: Contains the Exam class definition and related methods.
 - `practice.py`: Provides the function to practice exams interactively.
 - `sql.py`: Offers functions to interact with the SQLite3 database (`exams.db`).
-- `main.ipynb`: Jupyter Notebook to run the program.
 
 ## Key Functions
 
