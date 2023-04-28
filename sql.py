@@ -92,6 +92,12 @@ def read_all_exams():
 
 def delete_exam(table_name, database_name="/content/skill_builder_exams/exams.db"):
     execute_query(database_name, f"DROP TABLE IF EXISTS {table_name}")
+    execute_query(database_name, f"DELETE FROM TABLE_EXAMS WHERE EXAM_NAME='{table_name}'")
+    records = fetch_query(database_name, f"SELECT * FROM TABLE_EXAMS")
+    execute_query(database_name, f"DELETE FROM TABLE_EXAMS")
+
+    for i, record in enumerate(records, start=1):
+        execute_query(database_name, f"INSERT INTO TABLE_EXAMS VALUES ({i}, '{record[1]}', '{record[2]}')")
 
 def delete_all_exams():
     for exam in read_all_exams():
