@@ -87,24 +87,17 @@ def insert_exam(exam_name, tag, exam_data={}):
 
 from skill_builder_exams.exam import Exam
 
-def read_all_exams(tags=None):
-    if tags is None:
-        tags = []
-
-    table_names = get_table_names("/content/skill_builder_exams/exams.db")
-    filtered_table_names = [table_name for table_name in table_names if table_name not in ['sqlite_sequence', 'TABLE_EXAMS']]
-
-    # Read records from the TABLE_EXAMS
+def read_all_exams(tags=[]):
     records = read_records("/content/skill_builder_exams/exams.db", "TABLE_EXAMS")
+    table_names = get_table_names("/content/skill_builder_exams/exams.db")
 
-    # Filter records based on the given tags
     if tags:
-        records = [record for record in records if record[1] in tags]
+        filtered_records = [record for record in records if record[1] in tags]
+        filtered_table_names = [record[2] for record in filtered_records]
+    else:
+        filtered_table_names = [table_name for table_name in table_names if table_name not in ['sqlite_sequence', 'TABLE_EXAMS']]
 
-    # Create a dictionary mapping table_name to the corresponding tag and exam name
-    table_map = {record[0]: (record[1], record[2]) for record in records}
-
-    return [Exam(read_exam(table_name), table_map[table_name][1]) for table_name in filtered_table_names if table_name in table_map]
+    return [Exam(read_exam(table_name), table_name) for table_name in filtered_table_names]
 
 
 def delete_exam(table_name, database_name="/content/skill_builder_exams/exams.db"):
