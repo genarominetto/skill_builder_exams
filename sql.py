@@ -75,7 +75,7 @@ def read_exam(table_name):
 def get_table_names(database_name):
     return [table[0] for table in fetch_query(database_name, "SELECT name FROM sqlite_master WHERE type='table' AND name != 'sqlite_sequence'")]
 
-def insert_exam(exam_name, exam_data={}):
+def insert_exam(exam_name, tag, exam_data={}):
     table_structure = """
         ID INTEGER PRIMARY KEY AUTOINCREMENT,
         QUESTION VARCHAR(255),
@@ -83,6 +83,7 @@ def insert_exam(exam_name, exam_data={}):
     """
     create_table("/content/skill_builder_exams/exams.db", exam_name, table_structure)
     insert_dict_records("/content/skill_builder_exams/exams.db", exam_name, exam_data)
+    insert_record("/content/skill_builder_exams/exams.db",f"INSERT INTO TABLE_EXAM VALUES (NULL,'{table_name}','{tag}')")
 
 from skill_builder_exams.exam import Exam
 
