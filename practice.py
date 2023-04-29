@@ -1,5 +1,6 @@
 def practice(exams):
     print(str(len(exams)) + " exams selected.")
+    print()
     import random
     random.shuffle(exams)
     for exam in exams:
