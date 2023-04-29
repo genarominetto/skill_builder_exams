@@ -8,5 +8,7 @@ def practice(exams):
         if response.lower() == "y":
             print("Practicing ---" + exam.exam_description + "---")
             exam.practice_row()
+            print()
         else:
             print("Skipping ---" + exam.exam_description + "---")
+            print()
