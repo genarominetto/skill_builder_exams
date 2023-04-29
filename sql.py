@@ -121,12 +121,13 @@ def delete_all_exams():
         
 def print_all_exams():
     tuples_list = read_records("/content/skill_builder_exams/exams.db", "TABLE_EXAMS")
-    print("{:<15} {:<15}".format("EXAM", "TAG"))
-    print("-" * 30)
+    print("{:<15} {:<15} {:<10}".format("EXAM", "TAG", "QUESTIONS"))
+    print("-" * 40)
 
     for t in tuples_list:
         _, tag, exam = t
-        print("{:<15} {:<15}".format(exam, tag))
+        questions_count = len(read_exam(exam))
+        print("{:<15} {:<15} {:<10}".format(exam, tag, questions_count))
     print()
 
 
