@@ -1,6 +1,5 @@
-# sql.py
-
 import sqlite3
+from skill_builder_exams.exam import Exam
 
 def create_table(database_name, table_name, table_structure):
     connection = sqlite3.connect(database_name)
@@ -89,9 +88,6 @@ def insert_exam(exam_name, tag, exam_data={}):
         create_table("/content/skill_builder_exams/exams.db", exam_name, table_structure)
         insert_dict_records("/content/skill_builder_exams/exams.db", exam_name, exam_data)
         insert_record("/content/skill_builder_exams/exams.db", f"INSERT INTO TABLE_EXAMS VALUES (NULL, '{tag}', '{exam_name}')")
-
-
-from skill_builder_exams.exam import Exam
 
 def read_all_exams(tags=[]):
     records = read_records("/content/skill_builder_exams/exams.db", "TABLE_EXAMS")
