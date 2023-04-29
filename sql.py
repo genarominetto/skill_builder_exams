@@ -112,4 +112,14 @@ def delete_exam(table_name, database_name="/content/skill_builder_exams/exams.db
 def delete_all_exams():
     for exam in read_all_exams():
         delete_exam(exam.exam_description)
+        
+def print_all_exams():
+    tuples_list = read_records("/content/skill_builder_exams/exams.db", "TABLE_EXAMS")
+    print("{:<15} {:<15}".format("EXAM", "TAG"))
+    print("-" * 30)
+
+    for t in tuples_list:
+        _, tag, exam = t
+        print("{:<15} {:<15}".format(exam, tag))
+
 
