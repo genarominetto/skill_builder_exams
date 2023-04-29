@@ -74,16 +74,22 @@ def read_exam(table_name):
 
 def get_table_names(database_name):
     return [table[0] for table in fetch_query(database_name, "SELECT name FROM sqlite_master WHERE type='table' AND name != 'sqlite_sequence'")]
-
 def insert_exam(exam_name, tag, exam_data={}):
     table_structure = """
         ID INTEGER PRIMARY KEY AUTOINCREMENT,
         QUESTION VARCHAR(255),
         ANSWER VARCHAR(255)
     """
-    create_table("/content/skill_builder_exams/exams.db", exam_name, table_structure)
-    insert_dict_records("/content/skill_builder_exams/exams.db", exam_name, exam_data)
-    insert_record("/content/skill_builder_exams/exams.db",f"INSERT INTO TABLE_EXAMS VALUES (NULL,'{tag}','{exam_name}')")
+
+    # Check if the exam_name already exists in the TABLE_EXAMS
+    existing_exam = fetch_query("/content/skill_builder_exams/exams.db", "SELECT * FROM TABLE_EXAMS WHERE EXAM_NAME = ?", (exam_name,))
+    
+    # If the exam_name does not exist, create the table and insert the exam
+    if not existing_exam:
+        create_table("/content/skill_builder_exams/exams.db", exam_name, table_structure)
+        insert_dict_records("/content/skill_builder_exams/exams.db", exam_name, exam_data)
+        insert_record("/content/skill_builder_exams/exams.db", f"INSERT INTO TABLE_EXAMS VALUES (NULL, '{tag}', '{exam_name}')")
+
 
 from skill_builder_exams.exam import Exam
 
