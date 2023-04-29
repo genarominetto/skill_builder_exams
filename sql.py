@@ -121,5 +121,6 @@ def print_all_exams():
     for t in tuples_list:
         _, tag, exam = t
         print("{:<15} {:<15}".format(exam, tag))
+    print()
 
 
