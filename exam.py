@@ -18,18 +18,18 @@ class Exam:
                 print(" ---->  " + key + "?")
                 answer = input(" <---- ")
                 if answer.upper() == d[key].upper():
-                    print("✔")
+                    print(" -->  ✔")
                     print("")
                     score += 1
                     d.pop(key)
                 else:
-                    print("✘")
-                    print("The correct answer is --> ", (d[key]).upper())
+                    print(" -->  ✘")
+                    print(" -->  The correct answer is --> ", (d[key]).upper())
                     print("---->  " + key)
                     answer = input("? ")
                     while answer.upper() != d[key].upper():
                         print("---->  " + key)
-                        answer = input("? ")
+                        answer = input(" -->  ? ")
                     print("")
         end_time = time.time()
         time_taken = end_time - start_time
