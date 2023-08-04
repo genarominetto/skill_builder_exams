@@ -1,4 +1,5 @@
 # Skill Builder Exams
+**To use the program**, open `main.ipynb` in a Jupyter Notebook or Google Colab, and **execute all cells**.
 
 Skill Builder Exams is a Python program designed to manage and practice exams, allowing users to create, read, update, and delete exams, as well as practice them interactively.
 
