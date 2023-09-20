@@ -20,16 +20,17 @@ class Exam:
                 print(" ---->  " + key + "?")
                 answer = input(" <---- ")
                 if answer.upper() == d[key].upper():
-                    print(" -->  ✔")
-                    print("")
+                    print(" ---->  ✔")
+                    print()
                     score += 1
                     d.pop(key)
                 else:
                     while answer.upper() != d[key].upper():
-                        print(" -->  ✘")
-                        print(" -->  The correct answer is --> ", (d[key]).upper())
-                        print("---->  " + key)
-                        answer = input(" -->  ? ")
+                        print(" ---->  ✘")
+                        print(f' ---->  The correct answer is "{(d[key]).upper()}"')
+                        print()
+                        print(" ---->  " + key + "?")
+                        answer = input(" ---->  ? ")
                     print("")
 
             if first_round_score is None:
