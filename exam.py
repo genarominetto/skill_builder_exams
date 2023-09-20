@@ -30,7 +30,7 @@ class Exam:
                         print(f' ---->  The correct answer is "{(d[key]).upper()}"')
                         print()
                         print(" ---->  " + key + "?")
-                        answer = input(" ---->  ? ")
+                        answer = input(" <---- ")
                     print("")
 
             if first_round_score is None:
