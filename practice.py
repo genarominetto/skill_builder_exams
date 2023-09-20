@@ -1,4 +1,7 @@
+from skill_builder_exams.sql import read_all_exams
+
 def practice(exams):
+    exams = read_all_exams[exams]
     print(str(len(exams)) + " exams selected.")
     print()
     import random
