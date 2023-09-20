@@ -31,6 +31,7 @@ class Exam:
                         print()
                         print(" ---->  " + key + "?")
                         answer = input(" <---- ")
+                    print(" ---->  ✔")
                     print("")
 
             if first_round_score is None:
