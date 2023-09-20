@@ -41,7 +41,7 @@ class Exam:
         print("")
         print("-------------------------------------------------------------------------")
         print(f"{self.exam_description} test finished.")
-        print(f"Your score in the first round was: {first_round_score}/{max_score}")  # Now max_score is the total number of questions
+        print(f"Your score was: {first_round_score}/{max_score}")  # Now max_score is the total number of questions
         print(f"Time taken: {int(minutes)} minutes and {int(seconds)} seconds")
         print("-------------------------------------------------------------------------")
         print("")
