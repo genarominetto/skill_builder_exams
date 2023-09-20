@@ -1,4 +1,7 @@
 # Skill Builder Exams
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/GenaroHacker/skill_builder_exams/blob/main/main.ipynb)
+
 **To use the program**, open `main.ipynb` in a Jupyter Notebook or Google Colab, and **execute all cells**.
 
 Skill Builder Exams is a Python program designed to manage and practice exams, allowing users to create, read, update, and delete exams, as well as practice them interactively.
@@ -30,5 +33,7 @@ To add an exam to the database, follow these steps:
 5. Commit and push the updated `exams.db` file to the repository.
 
 This process will add the new exam with the given name, tag, and questions into the `exams.db` database, making it accessible for others using the system.
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/GenaroHacker/skill_builder_exams/blob/main/main.ipynb)
 
 Welcomes contributions or feedback.
