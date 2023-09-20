@@ -121,15 +121,16 @@ def print_all_exams():
     # Sort the tuples_list by the tag (element at index 1)
     sorted_tuples_list = sorted(tuples_list, key=lambda x: x[1])
 
-    print("{:<15} {:<15} {:<10}".format("EXAM", "TAG", "QUESTIONS"))
+    print("{:<15} {:<15} {:<10}".format("TAG", "EXAM", "QUESTIONS"))
     print("-" * 40)
 
     # Loop through the sorted list to print exams grouped by their tags
     for t in sorted_tuples_list:
         _, tag, exam = t
         questions_count = len(read_exam(exam))
-        print("{:<15} {:<15} {:<10}".format(exam, tag, questions_count))
+        print("{:<15} {:<15} {:<10}".format(tag, exam, questions_count))
     print()
+
 
 
 
