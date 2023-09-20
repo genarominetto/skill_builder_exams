@@ -7,14 +7,15 @@ class Exam:
         self.exam_description = exam_description
 
     def practice_row(self):
-        d = self.question_answer_dict
+        d = self.question_answer_dict.copy()
         start_time = time.time()
         first_round_score = None
+        max_score = len(d)  # Moved max_score initialization here
+
         while d != {}:
             key_list = list(d.keys())
             random.shuffle(key_list)
             score = 0
-            max_score = len(key_list)
             for key in key_list:
                 print(" ---->  " + key + "?")
                 answer = input(" <---- ")
@@ -40,7 +41,7 @@ class Exam:
         print("")
         print("-------------------------------------------------------------------------")
         print(f"{self.exam_description} test finished.")
-        print(f"Your score in the first round was: {first_round_score}/{max_score}")
+        print(f"Your score in the first round was: {first_round_score}/{max_score}")  # Now max_score is the total number of questions
         print(f"Time taken: {int(minutes)} minutes and {int(seconds)} seconds")
         print("-------------------------------------------------------------------------")
         print("")
