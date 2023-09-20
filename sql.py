@@ -117,13 +117,25 @@ def delete_all_exams():
         
 def print_all_exams():
     tuples_list = read_records("/content/skill_builder_exams/exams.db", "TABLE_EXAMS")
+    
+    # Create a dictionary to group exams by tags
+    grouped_by_tags = {}
+    for _, tag, exam in tuples_list:
+        if tag not in grouped_by_tags:
+            grouped_by_tags[tag] = []
+        questions_count = len(read_exam(exam))
+        grouped_by_tags[tag].append((exam, questions_count))
+
     print("{:<15} {:<15} {:<10}".format("EXAM", "TAG", "QUESTIONS"))
     print("-" * 40)
 
-    for t in tuples_list:
-        _, tag, exam = t
-        questions_count = len(read_exam(exam))
-        print("{:<15} {:<15} {:<10}".format(exam, tag, questions_count))
-    print()
+    # Loop through the dictionary to print exams grouped by their tags
+    for tag, exams in grouped_by_tags.items():
+        print(f"TAG: {tag}")
+        print("-" * 40)
+        for exam, questions_count in exams:
+            print("{:<15} {:<15} {:<10}".format(exam, tag, questions_count))
+        print()
+
 
 
