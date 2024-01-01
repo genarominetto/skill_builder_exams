@@ -54,14 +54,22 @@ def insert_dict_records(database_name, table_name, data_dict):
     cursor = connection.cursor()
 
     for question, answer in data_dict.items():
-        cursor.execute(f"SELECT * FROM {table_name} WHERE QUESTION = ? AND ANSWER = ?", (question, answer))
-        result = cursor.fetchone()
+        try:
+            query = f"SELECT * FROM {table_name} WHERE QUESTION = ? AND ANSWER = ?"
+            print("Executing query:", query, "with", question, answer)  # For debugging
+            cursor.execute(query, (question, answer))
+            result = cursor.fetchone()
 
-        if not result:
-            cursor.execute(f"INSERT INTO {table_name} (QUESTION, ANSWER) VALUES (?, ?)", (question, answer))
+            if not result:
+                insert_query = f"INSERT INTO {table_name} (QUESTION, ANSWER) VALUES (?, ?)"
+                print("Executing query:", insert_query, "with", question, answer)  # For debugging
+                cursor.execute(insert_query, (question, answer))
+        except sqlite3.OperationalError as e:
+            print("Error executing query:", e)  # Print error for debugging
 
     connection.commit()
     connection.close()
+
 
 def read_records_as_dict(database_name, table_name):
     records = fetch_query(database_name, f"SELECT * FROM {table_name}")
