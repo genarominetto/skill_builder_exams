@@ -83,7 +83,7 @@ def get_table_names(database_name):
     return [table[0] for table in fetch_query(database_name, "SELECT name FROM sqlite_master WHERE type='table' AND name != 'sqlite_sequence'")]
     
 def sanitize_table_name(name):
-    # Replace spaces with underscores and remove special characters
+    # Replace each non-alphanumeric character with an underscore
     return ''.join(char if char.isalnum() else '_' for char in name)
 
 def insert_exam(exam_name, tag, exam_data={}):
