@@ -54,22 +54,14 @@ def insert_dict_records(database_name, table_name, data_dict):
     cursor = connection.cursor()
 
     for question, answer in data_dict.items():
-        try:
-            query = f"SELECT * FROM {table_name} WHERE QUESTION = ? AND ANSWER = ?"
-            print("Executing query:", query, "with", question, answer)  # For debugging
-            cursor.execute(query, (question, answer))
-            result = cursor.fetchone()
+        cursor.execute(f"SELECT * FROM {table_name} WHERE QUESTION = ? AND ANSWER = ?", (question, answer))
+        result = cursor.fetchone()
 
-            if not result:
-                insert_query = f"INSERT INTO {table_name} (QUESTION, ANSWER) VALUES (?, ?)"
-                print("Executing query:", insert_query, "with", question, answer)  # For debugging
-                cursor.execute(insert_query, (question, answer))
-        except sqlite3.OperationalError as e:
-            print("Error executing query:", e)  # Print error for debugging
+        if not result:
+            cursor.execute(f"INSERT INTO {table_name} (QUESTION, ANSWER) VALUES (?, ?)", (question, answer))
 
     connection.commit()
     connection.close()
-
 
 def read_records_as_dict(database_name, table_name):
     records = fetch_query(database_name, f"SELECT * FROM {table_name}")
@@ -81,11 +73,6 @@ def read_exam(table_name):
 
 def get_table_names(database_name):
     return [table[0] for table in fetch_query(database_name, "SELECT name FROM sqlite_master WHERE type='table' AND name != 'sqlite_sequence'")]
-    
-def sanitize_table_name(name):
-    # Replace each non-alphanumeric character with an underscore
-    return ''.join(char if char.isalnum() else '_' for char in name)
-
 def insert_exam(exam_name, tag, exam_data={}):
     table_structure = """
         ID INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -93,17 +80,14 @@ def insert_exam(exam_name, tag, exam_data={}):
         ANSWER VARCHAR(255)
     """
 
-    sanitized_exam_name = sanitize_table_name(exam_name)
+    # Check if the exam_name already exists in the TABLE_EXAMS
+    existing_exam = fetch_query("/content/skill_builder_exams/exams.db", "SELECT * FROM TABLE_EXAMS WHERE EXAM_NAME = ?", (exam_name,))
     
-    # Check if the sanitized_exam_name already exists in the TABLE_EXAMS
-    existing_exam = fetch_query("/content/skill_builder_exams/exams.db", "SELECT * FROM TABLE_EXAMS WHERE EXAM_NAME = ?", (sanitized_exam_name,))
-    
-    # If the sanitized_exam_name does not exist, create the table and insert the exam
+    # If the exam_name does not exist, create the table and insert the exam
     if not existing_exam:
-        create_table("/content/skill_builder_exams/exams.db", sanitized_exam_name, table_structure)
-        insert_dict_records("/content/skill_builder_exams/exams.db", sanitized_exam_name, exam_data)
-        insert_record("/content/skill_builder_exams/exams.db", f"INSERT INTO TABLE_EXAMS VALUES (NULL, '{tag}', '{sanitized_exam_name}')")
-
+        create_table("/content/skill_builder_exams/exams.db", exam_name, table_structure)
+        insert_dict_records("/content/skill_builder_exams/exams.db", exam_name, exam_data)
+        insert_record("/content/skill_builder_exams/exams.db", f"INSERT INTO TABLE_EXAMS VALUES (NULL, '{tag}', '{exam_name}')")
 
 def read_all_exams(tags=[]):
     records = read_records("/content/skill_builder_exams/exams.db", "TABLE_EXAMS")
@@ -146,7 +130,6 @@ def print_all_exams():
         questions_count = len(read_exam(exam))
         print("{:<15} {:<15} {:<10}".format(tag, exam, questions_count))
     print()
-
 
 
 
