@@ -1,4 +1,4 @@
-creational_patterns = {
+creational_patterns_participants = {
     "Singleton": "Singleton",
     "Factory Method": "Creator - ConcreteCreator - Product - ConcreteProduct",
     "Abstract Factory": "AbstractFactory - ConcreteFactory - AbstractProduct - ConcreteProduct - Client",
@@ -6,7 +6,7 @@ creational_patterns = {
     "Prototype": "Prototype - ConcretePrototype - Client"
 }
 
-structural_patterns = {
+structural_patterns_participants = {
     "Adapter": "Target - Adapter - Adaptee - Client",
     "Bridge": "Abstraction - RefinedAbstraction - Implementor - ConcreteImplementor",
     "Composite": "Component - Leaf - Composite - Client",
@@ -16,7 +16,7 @@ structural_patterns = {
     "Proxy": "Subject - RealSubject - Proxy"
 }
 
-behavioral_patterns = {
+behavioral_patterns_participants = {
     "Observer": "Subject - Observer - ConcreteSubject - ConcreteObserver",
     "Strategy": "Strategy - ConcreteStrategy - Context",
     "Command": "Command - ConcreteCommand - Client - Invoker - Receiver",
