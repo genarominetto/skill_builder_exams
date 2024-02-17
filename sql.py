@@ -77,14 +77,23 @@ def print_all_exams(db_path='/content/skill_builder_exams/exams.db'):
     tuples_list = fetch_query("SELECT * FROM TABLE_EXAMS", db_path)
     sorted_tuples_list = sorted(tuples_list, key=lambda x: x[1])
 
-    # Adjusting the column widths in the format strings
-    print("{:<20} {:<30} {:<15}".format("TAG", "EXAM", "QUESTIONS"))
-    print("-" * 210)  # Adjusting the total length to match the new column widths
+    # Determine the maximum lengths of the TAG and EXAM columns
+    max_tag_length = max(len(t[1]) for t in sorted_tuples_list) + 5
+    max_exam_length = max(len(t[2]) for t in sorted_tuples_list) + 5
+
+    # Prepare format strings dynamically based on the max lengths
+    header_format = "{:<" + str(max_tag_length) + "} {:<" + str(max_exam_length) + "} {:<15}"
+    row_format = "{:<" + str(max_tag_length) + "} {:<" + str(max_exam_length) + "} {:<15}"
+
+    # Printing the table header
+    print(header_format.format("TAG", "EXAM", "QUESTIONS"))
+    print("-" * (max_tag_length + max_exam_length + 15))  # Adjusting the separator line length
 
     for t in sorted_tuples_list:
         _, tag, exam = t
         questions_count = len(read_records_as_dict(exam, db_path))
-        # Adjusting the column widths in the format strings for each row
-        print("{:<20} {:<30} {:<15}".format(tag, exam, questions_count))
+        # Printing each row according to the dynamically adjusted format
+        print(row_format.format(tag, exam, questions_count))
     print()
+
 
