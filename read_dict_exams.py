@@ -32,4 +32,4 @@ def process_and_insert_exams_from_directory():
                 file_dicts = find_dicts_in_file(filepath)
                 for dict_item in file_dicts:
                     for exam_name, exam_data in dict_item.items():
-                        insert_exam(exam_name, file_tag, exam_data, db_path="/content/refs/skill_builder_exams/exams.db")
+                        insert_exam(exam_name, file_tag, exam_data, db_path="/content/skill_builder_exams/exams.db")
