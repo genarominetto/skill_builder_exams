@@ -77,6 +77,11 @@ def print_all_exams(db_path='/content/skill_builder_exams/exams.db'):
     tuples_list = fetch_query("SELECT * FROM TABLE_EXAMS", db_path)
     sorted_tuples_list = sorted(tuples_list, key=lambda x: x[1])
 
+    # Check if the database is empty
+    if not sorted_tuples_list:
+        print("The database is empty.")
+        return
+
     # Determine the maximum lengths of the TAG and EXAM columns
     max_tag_length = max(len(t[1]) for t in sorted_tuples_list) + 5
     max_exam_length = max(len(t[2]) for t in sorted_tuples_list) + 5
@@ -95,5 +100,4 @@ def print_all_exams(db_path='/content/skill_builder_exams/exams.db'):
         # Printing each row according to the dynamically adjusted format
         print(row_format.format(tag, exam, questions_count))
     print()
-
 
