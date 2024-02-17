@@ -79,7 +79,7 @@ def print_all_exams(db_path='/content/skill_builder_exams/exams.db'):
 
     # Adjusting the column widths in the format strings
     print("{:<20} {:<30} {:<15}".format("TAG", "EXAM", "QUESTIONS"))
-    print("-" * 70)  # Adjusting the total length to match the new column widths
+    print("-" * 110)  # Adjusting the total length to match the new column widths
 
     for t in sorted_tuples_list:
         _, tag, exam = t
