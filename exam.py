@@ -28,11 +28,11 @@ class Exam:
                     while answer.upper() != d[key].upper():
                         print(" ---->  ✘")
                         print(f' ---->  The correct answer is "{(d[key]).upper()}"')
-                        print("\n\n\n\n\n\n\n\n\n\n")
+                        print()
                         print(" ---->  " + key + "?")
                         answer = input(" <---- ")
                     print(" ---->  ✔")
-                    print("")
+                    print("\n\n\n\n\n\n\n\n\n\n")
 
             if first_round_score is None:
                 first_round_score = score
