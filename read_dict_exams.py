@@ -23,7 +23,7 @@ def process_and_insert_exams_from_directory():
     Iterates over all Python files in the specified directory, extracts dictionary definitions,
     and inserts them into the database using the 'insert_exam' function.
     """
-    directory_path = '/content/refs/skill_builder_exams/exams'
+    directory_path = '/content/skill_builder_exams/exams'
     for root, dirs, files in os.walk(directory_path):
         for file in files:
             if file.endswith('.py'):
