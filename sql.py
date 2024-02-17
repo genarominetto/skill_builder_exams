@@ -77,11 +77,14 @@ def print_all_exams(db_path='/content/skill_builder_exams/exams.db'):
     tuples_list = fetch_query("SELECT * FROM TABLE_EXAMS", db_path)
     sorted_tuples_list = sorted(tuples_list, key=lambda x: x[1])
 
-    print("{:<15} {:<15} {:<10}".format("TAG", "EXAM", "QUESTIONS"))
-    print("-" * 40)
+    # Adjusting the column widths in the format strings
+    print("{:<20} {:<30} {:<15}".format("TAG", "EXAM", "QUESTIONS"))
+    print("-" * 70)  # Adjusting the total length to match the new column widths
 
     for t in sorted_tuples_list:
         _, tag, exam = t
         questions_count = len(read_records_as_dict(exam, db_path))
-        print("{:<15} {:<15} {:<10}".format(tag, exam, questions_count))
+        # Adjusting the column widths in the format strings for each row
+        print("{:<20} {:<30} {:<15}".format(tag, exam, questions_count))
     print()
+
