@@ -21,14 +21,14 @@ class Exam:
                 answer = input(" <---- ")
                 if answer.upper() == d[key].upper():
                     print(" ---->  ✔")
-                    print()
+                    print("\n\n\n\n\n\n\n\n\n\n")
                     score += 1
                     d.pop(key)
                 else:
                     while answer.upper() != d[key].upper():
                         print(" ---->  ✘")
                         print(f' ---->  The correct answer is "{(d[key]).upper()}"')
-                        print()
+                        print("\n\n\n\n\n\n\n\n\n\n")
                         print(" ---->  " + key + "?")
                         answer = input(" <---- ")
                     print(" ---->  ✔")
